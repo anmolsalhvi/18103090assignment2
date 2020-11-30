@@ -1,41 +1,46 @@
-import java.util.*;
+package com.company;
 
-class vector{
-    
-	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter the paragraph : ");
-		String s = sc.nextLine();
-		System.out.println("Enter the number of strings : ");
-		int n = sc.nextInt();
-		System.out.println("Enter the strings : ");
-		
-		HashSet<String> vec=new HashSet<String>();
-		for(int i = 0; i < n; i++)
-		{String mm = sc.next();
-		vec.add(mm);}
-		
-		s.trim();
-		s = s + " ";
-		int i = 0;
-		String newString = "";
-		int k = 0;
-		while(s.indexOf(' ', k) != -1)
-		{
-		    k = s.indexOf(' ', k);
-		    String p = s.substring(i, k);
-		    if(vec.contains(p))
-		    {
-		        newString += p.charAt(0);
-		        for(int j = 0; j < p.length() - 1; j++)
-		        newString += "*";
-		    }
-		    else newString += p;
-		    newString += " ";
-		    k++;
-		    i = k;
-		}
-		newString.trim();
-		System.out.println(newString);
-	}
+import java.util.Scanner;
+
+public class Main {
+
+    static void sort(int [] array, int n)
+    {
+        int [] count=new int[21];
+
+        for(int i=0;i<n;i++)
+        {
+            count[array[i]]++;
+        }
+
+        int j=0;
+        for(int i=1;i<21;i++)
+        {
+            while(count[i]--!=0)
+            {
+                array[j]=i;
+                j++;
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+
+	    int n;
+	    Scanner scanner=new Scanner(System.in);
+
+	    //taking input
+        System.out.println("Enter size of array: ");
+	    n=scanner.nextInt();
+	    int[] array=new int[n];
+	    for(int i=0;i<n;i++) array[i]=scanner.nextInt();
+
+	    sort(array, n);
+
+        System.out.println("Modified Array: ");
+	    for(int i=0;i<n;i++) System.out.print(array[i]+" ");
+
+	    scanner.close();
+
+    }
 }
