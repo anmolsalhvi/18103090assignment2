@@ -1,39 +1,40 @@
-package com.company;
+import java.util.*;
+import java.lang.*;
+import java.io.*;
 
-import java.util.Scanner;
-
-public class Main {
-
-    static int compare(String a, String b)
-    {
-        for(int i=0;i<a.length() && i<b.length();i++)
-        {
-            char c=a.charAt(i);
-            char d=b.charAt(i);
-            if(c>d) return 1;
-            else if(d>c) return -1;
-        }
-        if(a.length()>b.length()) return 1;
-        if(b.length()>a.length()) return -1;
-        return 0;
-    }
-
-    public static void main(String[] args) {
-
-	    Scanner scanner=new Scanner(System.in);
-
-		Syetem.out.println("Enter first string: ");
-	    String a=scanner.nextLine();
-		System.out.println("Enter second string: ");
-	    String b=scanner.nextLine();
-
-	    int comp=compare(a, b);
-
-	    if(comp>0) System.out.println("First string is lexicographically greater! ");
-	    else if(comp==0) System.out.println("Both the strings are lexicographically equal! ");
-	    else System.out.println("Second string is lexicographically greater! ");
-
-	    scanner.close();
-
-    }
+class order
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+	    String a, b;
+	    Scanner sc = new Scanner(System.in);
+	    System.out.println("Enter String 1 : ");
+	    a = sc.next();
+	    System.out.println("Enter String 2 : ");
+	    b = sc.next();
+	    
+	    int m = (a.length() < b.length())? a.length() : b.length();
+	    int i = 0;
+	    for(; i < m; i++)
+	    {
+	        if(a.charAt(i) != b.charAt(i))
+	        {
+	            if(a.charAt(i) > b.charAt(i))
+	            System.out.println(a + " is greater than " + b);
+	            else
+	            System.out.println(b + " is greater than " + a);
+	            break;
+	        }
+	    }
+	    
+	    if(i == m)
+	    {
+	        if(a.length() == b.length())
+	        System.out.println(a + " and " + b + " are the same strings");
+	        else if(a.length() > b.length() )
+	        System.out.println(a + " is greater than " + b);
+	        else
+	        System.out.println(b + " is greater than " + a);
+	    }
+	}
 }
